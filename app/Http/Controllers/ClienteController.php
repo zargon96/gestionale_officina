@@ -86,7 +86,7 @@ public function store(Request $request)
     }
     
 
-    public function update(Request $request, $id)
+public function update(Request $request, $id)
 {
     
     $cliente = Cliente::find($id);
@@ -103,7 +103,6 @@ public function store(Request $request)
         // 'gruppo_cliente_id' => $request->input('gruppo_cliente_id'),
     ]);
 
-    
     $cliente->auto()->update([
         'modello' => $request->input('modello'),
         'targa' => $request->input('targa'),
@@ -115,7 +114,7 @@ public function store(Request $request)
         'data_intervento' => $request->input('data_intervento'),
     ]);
 
-    if ($cliente->isClean()) {
+    if ($cliente->isDirty()) {
         $cliente->save();
         return redirect()->route('clienti.index')->with('success', 'Cliente aggiornato con successo');
     } else {
@@ -123,8 +122,6 @@ public function store(Request $request)
     }
     
 }
-
-
 
 
     public function destroy($id)
