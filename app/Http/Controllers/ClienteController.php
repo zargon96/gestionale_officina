@@ -88,8 +88,7 @@ public function store(Request $request)
 
     public function update(Request $request, $id)
 {
-    // Alcuni controlli e validazioni del form
-
+    
     $cliente = Cliente::find($id);
 
     if (!$cliente) {
@@ -102,6 +101,18 @@ public function store(Request $request)
         'telefono' => $request->input('telefono'),
         'codice_fiscale' => $request->input('codice_fiscale'),
         // 'gruppo_cliente_id' => $request->input('gruppo_cliente_id'),
+    ]);
+
+    
+    $cliente->auto()->update([
+        'modello' => $request->input('modello'),
+        'targa' => $request->input('targa'),
+        'n_telaio' => $request->input('n_telaio'),
+        'marca' => $request->input('marca'),
+        'anno' => $request->input('anno'),
+        'chilometri' => $request->input('chilometri'),
+        'note_stato' => $request->input('note_stato'),
+        'data_intervento' => $request->input('data_intervento'),
     ]);
 
     if ($cliente->isDirty()) {
