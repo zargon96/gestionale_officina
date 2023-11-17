@@ -59,7 +59,7 @@
             <input type="text" name="data_intervento" id="data_intervento" value="{{ $cliente->auto->data_intervento ?? '' }}" class="form-control">
         </div>
         <div class="col-md-6">
-            <button type="submit" class="btn btn-primary mt-3">Salva Modifiche</button> 
+            <button type="submit" class="btn btn-primary mt-3">Salva Modifiche</button>   
         </div>
         <div class="col-md-6">
             <a href="{{ route('clienti.index') }}" class="btn btn-primary mt-3">Torna all'elenco dei clienti</a>
