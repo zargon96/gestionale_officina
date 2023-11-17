@@ -119,7 +119,7 @@ public function store(Request $request)
         $cliente->save();
         return redirect()->route('clienti.index')->with('success', 'Cliente aggiornato con successo');
     } else {
-        return redirect()->route('clienti.index')->with('info', 'Nessuna modifica effettuata');
+        return redirect()->route('clienti.index')->with('info', 'Nessuna modifica effettuata'); 
     }
     
 }
