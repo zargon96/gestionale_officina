@@ -74,8 +74,10 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="titolo-label" for="note_stato">Dettagli dell intervento / stato</label>
-                <input type="text" name="note_stato" id="note_stato" value="{{ $cliente->auto->first()->note_stato ?? '' }}" class="form-control">
+                {{-- <label class="titolo-label" for="note_stato">Dettagli dell intervento / stato</label>
+                <input type="text" name="note_stato" id="note_stato" value="{{ $cliente->auto->first()->note_stato ?? '' }}" class="form-control"> --}}
+                <label for="note_stato" class="form-label">Dettagli dell intervento / stato</label>
+                <textarea name="note_stato" class="form-control" id="note_stato" rows="1">{{ $cliente->auto->first()->note_stato ?? '' }}</textarea>
             </div>
         </div>
         <div class="col-md-6">        
