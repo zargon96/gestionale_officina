@@ -62,6 +62,10 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                                <div class="col-md-12">
+                                    <h6 class="mt-3">Non sei registrato?</h6>
+                                    <a href="{{ route('register') }}" class="btn btn-primary mt-3">Vai alla pagina di registrazione</a>
+                                </div>
                             </div>
                         </div>
                     </form>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pt-5">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
@@ -66,6 +66,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                            </div>
+                            <div class="col-md-6 offset-md-4">
+                                <h6 class="mt-3">Sei già registrato?</h6>
+                                <a href="{{ route('login') }}" class="btn btn-primary mt-3">Vai alla pagina di login</a>
                             </div>
                         </div>
                     </form>
