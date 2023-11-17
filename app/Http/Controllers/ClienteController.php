@@ -115,12 +115,13 @@ public function store(Request $request)
         'data_intervento' => $request->input('data_intervento'),
     ]);
 
-    if ($cliente->isDirty()) {
+    if ($cliente->isClean()) {
         $cliente->save();
         return redirect()->route('clienti.index')->with('success', 'Cliente aggiornato con successo');
     } else {
-        return redirect()->route('clienti.index')->with('error', 'Errore: Non è stato possibile aggiornare il cliente');
+        return redirect()->route('clienti.index')->with('info', 'Nessuna modifica effettuata');
     }
+    
 }
 
 
