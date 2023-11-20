@@ -25,18 +25,5 @@ class Cliente extends Model
     
 }
 
-// Modello Auto
-class Auto extends Model
-{ 
-    protected $table = 'auto';
-    protected $fillable = ['modello', 'targa', 'n_telaio', 'marca', 'anno', 'chilometri', 'note_stato', 'data_intervento'];
-
-    // Relazione con la tabella Cliente
-    public function cliente()
-    {
-        return $this->belongsTo(Cliente::class);
-    }
-}
-
 
 

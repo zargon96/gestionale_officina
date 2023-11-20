@@ -19,7 +19,7 @@ class ClienteController extends Controller
     }
 
 
-public function store(Request $request)
+    public function store(Request $request)
 {
     $request->validate([
         'nome' => 'required',
@@ -29,7 +29,6 @@ public function store(Request $request)
         'codice_fiscale' => 'nullable|string',
     ]);
 
-    // Verifica l'esistenza del cliente
     $cliente = Cliente::firstOrCreate([
         'email' => $request->input('email'),
     ], [
@@ -39,23 +38,12 @@ public function store(Request $request)
         'codice_fiscale' => $request->input('codice_fiscale'),
     ]);
 
-    // Crea un'auto associata al cliente
-    $auto = new Auto([
-        'modello' => $request->input('modello'),
-        'targa' => $request->input('targa'),
-        'n_telaio' => $request->input('n_telaio'),
-        'marca' => $request->input('marca'),
-        'anno' => $request->input('anno'),
-        'chilometri' => $request->input('chilometri'),
-        'note_stato' => $request->input('note_stato'),
-        'data_intervento' => $request->input('data_intervento'),
-    ]);
+    $cliente->auto();
 
-    // Assegna l'auto al cliente
-    $cliente->auto()->save($auto);
+    return redirect()->route('clienti.auto.create', ['cliente' => $cliente->id])->with('success', 'Cliente creato con successo');
 
-    return redirect()->route('clienti.index')->with('success', 'Cliente creato con successo');
 }
+
 
 
 
@@ -111,7 +99,7 @@ public function update(Request $request, $id)
         'anno' => $request->input('anno'),
         'chilometri' => $request->input('chilometri'),
         'note_stato' => $request->input('note_stato'),
-        'data_intervento' => $request->input('data_intervento'),
+        'data_intervento' => $request->input('data_intervento'), 
     ]);
 
     if ($cliente->isDirty()) {

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\auth;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\AutoController;
 
 
 
@@ -29,6 +30,11 @@ Route::middleware(['web'])->group(function () {
     Route::get('/clienti/{id}/edit', [ClienteController::class, 'edit'])->name('clienti.edit');
     Route::post('/clienti/{id}', [ClienteController::class, 'update'])->name('clienti.update');
     Route::delete('/clienti/{id}', [ClienteController::class, 'destroy'])->name('clienti.destroy');
+
+    //rotte auto
+    Route::get('clienti/{cliente}/auto/create', [AutoController::class, 'create'])->name('clienti.auto.create');
+    Route::post('/cliente/{cliente}/auto/store_auto', [AutoController::class, 'store'])->name('clienti.auto.store');
+
 });
 
 Auth::routes();
