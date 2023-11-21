@@ -34,6 +34,11 @@ Route::middleware(['web'])->group(function () {
     //rotte auto
     Route::get('clienti/{cliente}/auto/create', [AutoController::class, 'create'])->name('clienti.auto.create');
     Route::post('/cliente/{cliente}/auto/store_auto', [AutoController::class, 'store'])->name('clienti.auto.store');
+    Route::get('/cliente/{cliente}/auto/edit_auto', [AutoController::class, 'edit'])->name('clienti.auto.edit');
+    Route::get('/cliente/{cliente}/auto/update_auto', [AutoController::class, 'update'])->name('clienti.auto.update');
+
+
+
 
 });
 

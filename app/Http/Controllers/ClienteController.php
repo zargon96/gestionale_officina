@@ -87,19 +87,19 @@ class ClienteController extends Controller
 
         $cliente->save(); // Salva le modifiche al cliente
 
-        // Itera sulle auto associate al cliente
-        foreach ($cliente->auto as $index => $auto) {
-            $auto->update([
-                'modello' => $request->input("modello.{$index}"),
-                'targa' => $request->input("targa.{$index}"),
-                'n_telaio' => $request->input("n_telaio.{$index}"),
-                'marca' => $request->input("marca.{$index}"),
-                'anno' => $request->input("anno.{$index}"),
-                'chilometri' => $request->input("chilometri.{$index}"),
-                'note_stato' => $request->input("note_stato.{$index}"),
-                'data_intervento' => $request->input("data_intervento.{$index}"),
-            ]);
-        }
+        // // Itera sulle auto associate al cliente
+        // foreach ($cliente->auto as $index => $auto) {
+        //     $auto->update([
+        //         'modello' => $request->input("modello.{$index}"),
+        //         'targa' => $request->input("targa.{$index}"),
+        //         'n_telaio' => $request->input("n_telaio.{$index}"),
+        //         'marca' => $request->input("marca.{$index}"),
+        //         'anno' => $request->input("anno.{$index}"),
+        //         'chilometri' => $request->input("chilometri.{$index}"),
+        //         'note_stato' => $request->input("note_stato.{$index}"),
+        //         'data_intervento' => $request->input("data_intervento.{$index}"),
+        //     ]);
+        // }
 
         return redirect()->route('clienti.index')->with('success', 'Cliente aggiornato con successo');
 

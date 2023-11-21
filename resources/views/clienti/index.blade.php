@@ -39,19 +39,25 @@
 @foreach ($clienti as $cliente)
     <div class="container">   
         <div class="row mt-5">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <a class="btn btn-primary flex1" href="{{ route('clienti.edit', $cliente->id) }}"> 
                     Modifica Cliente
                 </a>
             </div>
+
+            <div class="col-md-3">
+                <a class="btn btn-primary flex1" href="{{ route('clienti.auto.edit',  $cliente->id) }}">
+                    Modifica Auto
+                </a>
+            </div>
         
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <a class="btn btn-primary flex1" href="{{ route('clienti.show', $cliente->id) }}">
                     Mostra Cliente
                 </a>
             </div>
         
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}" class="row">
                     @csrf
                     @method('DELETE')
