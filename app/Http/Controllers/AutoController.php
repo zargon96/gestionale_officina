@@ -60,38 +60,7 @@ public function store(Request $request, $clienteId)
 
     return redirect()->route('clienti.auto.create', $cliente->id)->with('success', 'Auto aggiunte con successo! aggiungine altre o premi su "torna indietro"');
 }
-// public function store(Request $request, $clienteId)
-// {
-//     $request->validate([
-//         'modello' => 'required',
-//         'targa' => 'required',
-//         'n_telaio' => 'required',
-//         'marca' => 'required',
-//         'anno' => 'required',
-//         'chilometri' => 'required',
-//         'note_stato' => 'required',
-//         'data_intervento' => 'required',
-//     ]);
 
-//     $autosData = $request->input('auto');
-
-//     $cliente = Cliente::find($clienteId);
-
-//     if (!$cliente) {
-//         return redirect()->route('cliente.create')->with('error', 'Cliente non trovato');
-//     }
-
-//     foreach ($autosData as $autoData) {
-//         $auto = new Auto($autoData);
-//         $cliente->auto()->save($auto);
-//     }
-
-//     return redirect()->route('clienti.auto.create', $cliente->id)->with('success', 'Auto aggiunte con successo al cliente');
-// }
-
-
-
-    
 }
 
 
