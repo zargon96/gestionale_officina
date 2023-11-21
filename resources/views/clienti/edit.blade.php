@@ -35,8 +35,8 @@
                 <input type="text" name="codice_fiscale" id="codice_fiscale" value="{{ $cliente->codice_fiscale }}" class="form-control">
             </div>
         </div>
-        @foreach($cliente->auto as $auto)
-        <h3 class="titolo">Dati Auto</h3>
+        @foreach($cliente->auto as $index => $auto)
+        <h3 class="titolo">Dati Auto {{ $index + 1 }}</h3>
         <div class="col-md-6">
             <div class="form-group">
                 <label class="titolo-label" for="modello">Modello</label>
