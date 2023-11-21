@@ -58,7 +58,7 @@ public function store(Request $request, $clienteId)
     // Associa l'auto al cliente
     $cliente->auto()->save($auto);
 
-    return redirect()->route('clienti.auto.create', $cliente->id)->with('success', 'Auto aggiunte con successo aggiungine altre o premi su "torna indietro"');
+    return redirect()->route('clienti.auto.create', $cliente->id)->with('success', 'Auto aggiunte con successo! aggiungine altre o premi su "torna indietro"');
 }
 // public function store(Request $request, $clienteId)
 // {

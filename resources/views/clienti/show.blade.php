@@ -4,9 +4,8 @@
     <h1 class="titolo">Dettagli Cliente</h1>
     <div class="container mt-5">
         <div class="row">
-            <table class="">
+            <table>
                 <tbody>
-                    @foreach ($cliente->auto as $auto)
                     <tr>
                         <th>Nome:</th>
                         <td>{{ $cliente->nome }}</td>
@@ -27,6 +26,7 @@
                         <th>Codicefiscale:</th>
                         <td>{{ $cliente->codice_fiscale }}</td>
                     </tr>
+                    @foreach ($cliente->auto as $auto)
                     <tr>
                         <th>Modello:</th>
                         <td>{{ $auto->modello }}</td>
