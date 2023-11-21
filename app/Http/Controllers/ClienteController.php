@@ -74,41 +74,77 @@ class ClienteController extends Controller
     }
     
 
+// public function update(Request $request, $id)
+// {
+    
+//     $cliente = Cliente::find($id);
+
+//     if (!$cliente) {
+//         return redirect()->route('clienti.index')->with('error', 'Cliente non trovato');
+//     }
+//     $cliente->fill([
+//         'nome' => $request->input('nome'),
+//         'cognome' => $request->input('cognome'),
+//         'email' => $request->input('email'),
+//         'telefono' => $request->input('telefono'),
+//         'codice_fiscale' => $request->input('codice_fiscale'),
+//         // 'gruppo_cliente_id' => $request->input('gruppo_cliente_id'),
+//     ]);
+
+//     $cliente->auto()->update([
+//         'modello' => $request->input('modello'),
+//         'targa' => $request->input('targa'),
+//         'n_telaio' => $request->input('n_telaio'),
+//         'marca' => $request->input('marca'),
+//         'anno' => $request->input('anno'),
+//         'chilometri' => $request->input('chilometri'),
+//         'note_stato' => $request->input('note_stato'),
+//         'data_intervento' => $request->input('data_intervento'), 
+//     ]);
+
+//     if ($cliente->isDirty()) {
+//         $cliente->save();
+//         return redirect()->route('clienti.index')->with('success', 'Cliente aggiornato con successo');
+//     } else {
+//         return redirect()->route('clienti.index')->with('info', 'Nessuna modifica effettuata'); 
+//     }
+    
+// }
+
 public function update(Request $request, $id)
 {
-    
     $cliente = Cliente::find($id);
 
     if (!$cliente) {
         return redirect()->route('clienti.index')->with('error', 'Cliente non trovato');
     }
+
     $cliente->fill([
         'nome' => $request->input('nome'),
         'cognome' => $request->input('cognome'),
         'email' => $request->input('email'),
         'telefono' => $request->input('telefono'),
         'codice_fiscale' => $request->input('codice_fiscale'),
-        // 'gruppo_cliente_id' => $request->input('gruppo_cliente_id'),
     ]);
 
-    $cliente->auto()->update([
-        'modello' => $request->input('modello'),
-        'targa' => $request->input('targa'),
-        'n_telaio' => $request->input('n_telaio'),
-        'marca' => $request->input('marca'),
-        'anno' => $request->input('anno'),
-        'chilometri' => $request->input('chilometri'),
-        'note_stato' => $request->input('note_stato'),
-        'data_intervento' => $request->input('data_intervento'), 
-    ]);
+    $cliente->save(); // Salva le modifiche al cliente
 
-    if ($cliente->isDirty()) {
-        $cliente->save();
-        return redirect()->route('clienti.index')->with('success', 'Cliente aggiornato con successo');
-    } else {
-        return redirect()->route('clienti.index')->with('info', 'Nessuna modifica effettuata'); 
+    // Itera sulle auto associate al cliente
+    foreach ($cliente->auto as $index => $auto) {
+        $auto->update([
+            'modello' => $request->input("modello.{$index}"),
+            'targa' => $request->input("targa.{$index}"),
+            'n_telaio' => $request->input("n_telaio.{$index}"),
+            'marca' => $request->input("marca.{$index}"),
+            'anno' => $request->input("anno.{$index}"),
+            'chilometri' => $request->input("chilometri.{$index}"),
+            'note_stato' => $request->input("note_stato.{$index}"),
+            'data_intervento' => $request->input("data_intervento.{$index}"),
+        ]);
     }
-    
+
+    return redirect()->route('clienti.index')->with('success', 'Cliente aggiornato con successo');
+
 }
 
 
