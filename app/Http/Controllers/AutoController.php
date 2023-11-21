@@ -23,43 +23,6 @@ class AutoController extends Controller
 
     
 
-// public function store(Request $request, $clienteId)
-// {
-//     $request->validate([
-//         'modello' => 'required',
-//         'targa' => 'required',
-//         'n_telaio' => 'required',
-//         'marca' => 'required',
-//         'anno' => 'required',
-//         'chilometri' => 'required',
-//         'note_stato' => 'required',
-//         'data_intervento' => 'required',
-//     ]);
-
-//     // Trova il cliente
-//     $cliente = Cliente::find($clienteId);
-
-//     if (!$cliente) {
-//         return redirect()->route('clienti.index')->with('error', 'Cliente non trovato');
-//     }
-
-//     // Crea un nuovo oggetto Auto
-//     $auto = new Auto([
-//         'modello' => $request->input('modello'),
-//         'targa' => $request->input('targa'),
-//         'n_telaio' => $request->input('n_telaio'),
-//         'marca' => $request->input('marca'),
-//         'anno' => $request->input('anno'),
-//         'chilometri' => $request->input('chilometri'),
-//         'note_stato' => $request->input('note_stato'),
-//         'data_intervento' => $request->input('data_intervento'),
-//     ]);
-
-//     // Associa l'auto al cliente
-//     $cliente->auto()->save($auto);
-
-//     return redirect()->route('clienti.index')->with('success', 'Auto aggiunta con successo al cliente');
-// }
 public function store(Request $request, $clienteId)
 {
     $request->validate([
@@ -73,31 +36,58 @@ public function store(Request $request, $clienteId)
         'data_intervento' => 'required',
     ]);
 
-    $autosData = $request->input('auto');
+    // Trova il cliente
+    $cliente = Cliente::find($clienteId);
 
-    foreach ($autosData as $autoData) {
-        $auto = new Auto([
-            'modello' => $autoData['modello'],
-            'targa' => $autoData['targa'],
-            'n_telaio' => $autoData['n_telaio'],
-            'marca' => $autoData['marca'],
-            'anno' => $autoData['anno'],
-            'chilometri' => $autoData['chilometri'],
-            'note_stato' => $autoData['note_stato'],
-            'data_intervento' => $autoData['data_intervento'],
-        ]);
-
-        $cliente = Cliente::find($clienteId);
-
-        if (!$cliente) {
-            return redirect()->route('cliente.create')->with('error', 'Cliente non trovato');
-        }
-
-        $cliente->auto()->save($auto);
+    if (!$cliente) {
+        return redirect()->route('clienti.index')->with('error', 'Cliente non trovato');
     }
 
-    return redirect()->route('clienti.index')->with('success', 'Auto aggiunte con successo al cliente');
+    // Crea un nuovo oggetto Auto
+    $auto = new Auto([
+        'modello' => $request->input('modello'),
+        'targa' => $request->input('targa'),
+        'n_telaio' => $request->input('n_telaio'),
+        'marca' => $request->input('marca'),
+        'anno' => $request->input('anno'),
+        'chilometri' => $request->input('chilometri'),
+        'note_stato' => $request->input('note_stato'),
+        'data_intervento' => $request->input('data_intervento'),
+    ]);
+
+    // Associa l'auto al cliente
+    $cliente->auto()->save($auto);
+
+    return redirect()->route('clienti.auto.create', $cliente->id)->with('success', 'Auto aggiunte con successo al cliente');
 }
+// public function store(Request $request, $clienteId)
+// {
+//     $request->validate([
+//         'modello' => 'required',
+//         'targa' => 'required',
+//         'n_telaio' => 'required',
+//         'marca' => 'required',
+//         'anno' => 'required',
+//         'chilometri' => 'required',
+//         'note_stato' => 'required',
+//         'data_intervento' => 'required',
+//     ]);
+
+//     $autosData = $request->input('auto');
+
+//     $cliente = Cliente::find($clienteId);
+
+//     if (!$cliente) {
+//         return redirect()->route('cliente.create')->with('error', 'Cliente non trovato');
+//     }
+
+//     foreach ($autosData as $autoData) {
+//         $auto = new Auto($autoData);
+//         $cliente->auto()->save($auto);
+//     }
+
+//     return redirect()->route('clienti.auto.create', $cliente->id)->with('success', 'Auto aggiunte con successo al cliente');
+// }
 
 
 
