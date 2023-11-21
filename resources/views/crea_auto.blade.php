@@ -39,10 +39,12 @@
                     <label class="form-label">Data dell'intervento</label>
                     <input type="text" name="data_intervento" class="form-control">
                 </div>
-            <div class="col-md-12 mt-3">
+            <div class="col-md-6 mt-3">
                 <button type="submit" class="btn btn-primary">Salva Auto</button>
-                <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('clienti.index') }}'">Torna Indietro</button>
                 {{-- <button type="button" class="btn btn-success" onclick="aggiungiAltraAuto()">Aggiungi Altra Auto</button> --}}
+            </div>
+            <div class="col-md-6 mt-3">
+                <button type="button" class="btn btn-primary" onclick="location.href='{{ route('clienti.index') }}'">Torna Indietro</button>
             </div>
         </form>
     </div>

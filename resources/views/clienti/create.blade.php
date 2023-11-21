@@ -25,10 +25,6 @@
                 <label class="form-label">Codicefiscale</label>
                 <input type="text" name="codice_fiscale" class="form-control">
             </div>
-            {{-- <div class="col-md-3">
-                <label class="form-label">Gruppo Cliente</label>
-                <input type="text" name="gruppo_cliente_id" class="form-control">
-            </div> --}}
             <div class="col-md-6">
                 <button type="submit" class="btn btn-primary mt-3">Salva Cliente</button>
             </div>

@@ -14,7 +14,7 @@ class AutoController extends Controller
         $cliente = Cliente::find($clienteId);
     
         if (!$cliente) {
-            // Gestisci il caso in cui il cliente non viene trovato
+            return redirect()->route('clienti.index')->with('error', 'Cliente non trovato');
         }
     
         return view('crea_auto', compact('cliente', 'auto'));

@@ -62,11 +62,15 @@
                     @endforeach
                 </tbody>
             </table>
-            <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}" class="mt-4">
+            <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}" class="row mt-4">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Elimina Cliente</button>
-                <a href="{{ route('clienti.index') }}" class="btn btn-primary">Torna all'elenco dei clienti</a> 
+                <div class="col-md-6 mt-3">
+                    <button type="submit" class="btn btn-danger">Elimina Cliente</button>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <a href="{{ route('clienti.index') }}" class="btn btn-primary">Torna all'elenco dei clienti</a> 
+                </div>
             </form>
         </div>
     </div>

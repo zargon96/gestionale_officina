@@ -52,7 +52,7 @@
             </div>
         
             <div class="col-md-4">
-                <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}" class="flex1">
+                <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}" class="row">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">
