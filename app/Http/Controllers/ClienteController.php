@@ -93,18 +93,22 @@ class ClienteController extends Controller
 
     public function destroy($id)
     {
-        // Recupera il cliente dal database
         $cliente = Cliente::find($id);
 
-        // Verifica se il cliente esiste
-        if (!$cliente) {
+        if ($cliente) {
+            // Elimina le auto associate
+            $cliente->auto()->delete();
+
+            // Elimina il cliente solo se esiste
+            $cliente->delete();
+
+            return redirect()->route('clienti.index')->with('success', 'Cliente eliminato con successo');
+        } else {
+            // Se il cliente non esiste, reindirizza a una pagina di errore
             return redirect()->route('clienti.index')->with('error', 'Cliente non trovato');
         }
-
-        // Elimina il cliente dal database
-        $cliente->delete();
-
-        return redirect()->route('clienti.index')->with('success', 'Cliente eliminato con successo');
     }
+
+
 }
 

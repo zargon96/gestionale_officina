@@ -36,7 +36,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('/cliente/{cliente}/auto/store_auto', [AutoController::class, 'store'])->name('clienti.auto.store');
     Route::get('/cliente/{cliente}/auto/edit_auto', [AutoController::class, 'edit'])->name('clienti.auto.edit');
     Route::post('/cliente/{cliente}/auto/update_auto', [AutoController::class, 'update'])->name('clienti.auto.update');
-    
+    Route::delete('/cliente/{cliente}/auto', [AutoController::class, 'destroy'])->name('clienti.auto.destroy');
 
 
 

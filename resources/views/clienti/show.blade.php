@@ -1,47 +1,22 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class="titolo">Dettagli Cliente</h1>
+    <h1 class="titolo">Dettagli Auto cliente</h1>
     <div class="container mt-5">
         <div class="row">
-            <table class="">
-                <tbody>
-                    <tr>
-                        <td>Nome</td>
-                        <td>{{ $cliente->nome }}</td>
-                    </tr>
-                    <tr>
-                        <td>Cognome</td>
-                        <td>{{ $cliente->cognome }}</td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>{{ $cliente->email }}</td>
-                    </tr>
-                    <tr>
-                        <td>Telefono</td>
-                        <td>{{ $cliente->telefono }}</td>
-                    </tr>
-                    <tr>
-                        <td>Codice fiscale</td>
-                        <td>{{ $cliente->codice_fiscale }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <table class="mt-4">
-                <thead>
-                    <tr>
-                        <th>Modello</th>
-                        <th>Targa</th>
-                        <th>Numero del telaio</th>
-                        <th>Marca</th>
-                        <th>Anno</th>
-                        <th>Chilometri</th>
-                        <th>Dettagli intervento / stato</th>
-                        <th>Data intervento</th>
-                    </tr>
-                </thead>
-                <tbody>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Modello</th>
+                            <th scope="col">Targa</th>
+                            <th scope="col">Numero del telaio</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Anno</th>
+                            <th scope="col">Chilometri</th>
+                            <th scope="col">Note</th>
+                            <th scope="col">Data dell'intervento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     @foreach ($cliente->auto as $auto)
                         <tr>
                             <td>{{ $auto->modello }}</td>
@@ -52,17 +27,32 @@
                             <td>{{ $auto->chilometri }}</td>
                             <td>{{ $auto->note_stato }}</td>
                             <td>{{ $auto->data_intervento }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('clienti.auto.edit', ['cliente' => $cliente->id, 'auto' => $auto->id]) }}">
+                                    Modifica Auto
+                                </a>
+                            </td>
+                            <td>
+                                <form method="POST" action="{{ route('clienti.auto.destroy', ['cliente' => $cliente->id, 'auto' => $auto->id]) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit">
+                                        Elimina Auto
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            
 
             <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}" class="row mt-4">
                 @csrf
-                @method('DELETE')
+                {{-- @method('DELETE')
                 <div class="col-md-6 mt-3">
                     <button type="submit" class="btn btn-danger">Elimina Cliente</button>
-                </div>
+                </div> --}}
                 <div class="col-md-6 mt-3">
                     <a href="{{ route('clienti.index') }}" class="btn btn-primary">Torna all'elenco dei clienti</a> 
                 </div>
