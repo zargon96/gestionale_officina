@@ -111,6 +111,42 @@ public function update(Request $request, $cliente_id)
 }
 
 
+public function destroy($id)
+{
+    $auto = Auto::with('cliente')->find($id);
+    if ($auto) {
+        // Elimina le auto associate
+        $auto->auto()->delete();
+
+        // Elimina il auto solo se esiste
+        $auto->delete();
+
+        return redirect()->route('clienti.index')->with('success', 'auto eliminato con successo');
+    } else {
+        // Se il auto non esiste, reindirizza a una pagina di errore
+        return redirect()->route('clienti.index')->with('error', 'auto non trovato');
+    }
+}
+
+
+// public function destroy($id)
+// {
+//     $auto = Auto::find($id);
+
+//     if ($auto) {
+//         // Elimina le auto associate
+//         $auto->cliente()->delete();
+
+//         // Elimina l' auto solo se esiste
+//         $auto->delete();
+
+//         return redirect()->route('clienti.index')->with('success', 'auto eliminato con successo');
+//     } else {
+//         // Se il auto$auto non esiste, reindirizza a una pagina di errore
+//         return redirect()->route('clienti.index')->with('error', 'auto non trovato');
+//     }
+// }
+
 }
 
 
