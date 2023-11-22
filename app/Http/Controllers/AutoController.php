@@ -61,9 +61,9 @@ public function store(Request $request, $clienteId)
     return redirect()->route('clienti.auto.create', $cliente->id)->with('success', 'Auto aggiunte con successo! aggiungine altre o premi su "torna indietro"');
 }
 
-public function edit($id)
+public function edit($cliente_id)
 {
-    $auto = Auto::with('cliente')->find($id);
+    $auto = Auto::with('cliente')->find($cliente_id);
 
     if ($auto) {
         return view('auto.edit_auto', ['auto' => $auto ]);
@@ -73,16 +73,27 @@ public function edit($id)
 }
 
 
-
 public function update(Request $request, $cliente_id)
 {
-    $auto = Cliente::find($cliente_id);
+    $cliente = Cliente::find($cliente_id);
+
+    if (!$cliente) {
+        return redirect()->route('clienti.index')->with('error', 'Cliente non trovato');
+    }
+
+    // Utilizza la relazione tra Cliente e Auto per ottenere l'auto
+    $auto = $cliente->auto;
 
     if (!$auto) {
         return redirect()->route('clienti.index')->with('error', 'Auto non trovata');
     }
-   
-        $auto->fill([
+
+    // Ottieni tutte le auto associate al cliente
+    $auto_cliente = $cliente->auto;
+
+    // Itera su ciascuna auto e aggiorna i campi desiderati
+    foreach ($auto_cliente as $auto) {
+        $auto->update([
             'modello' => $request->input("modello"),
             'targa' => $request->input("targa"),
             'n_telaio' => $request->input("n_telaio"),
@@ -92,12 +103,13 @@ public function update(Request $request, $cliente_id)
             'note_stato' => $request->input("note_stato"),
             'data_intervento' => $request->input("data_intervento"),
         ]);
-    
-    $auto->save(); // Salva le modifiche al cliente
+    }
+
+    $auto->save(); // Salva le modifiche all'auto
 
     return redirect()->route('clienti.index')->with('success', 'Auto aggiornata con successo');
-
 }
+
 
 }
 

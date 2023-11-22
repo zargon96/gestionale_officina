@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 // Modello Auto
 class Auto extends Model
 { 
-
-
-    
     use HasFactory;
     protected $primaryKey = 'id'; 
     protected $table = 'auto';

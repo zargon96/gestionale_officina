@@ -45,11 +45,13 @@
                 </a>
             </div>
 
-            <div class="col-md-3">
-                <a class="btn btn-primary flex1" href="{{ route('clienti.auto.edit',  $cliente->id) }}">
-                    Modifica Auto
-                </a>
-            </div>
+            @foreach ($cliente->auto as $auto)
+                <div class="col-md-3">
+                    <a class="btn btn-primary flex1" href="{{ route('clienti.auto.edit', $auto->id) }}">
+                        Modifica Auto
+                    </a>
+                </div>
+            @endforeach
         
             <div class="col-md-3">
                 <a class="btn btn-primary flex1" href="{{ route('clienti.show', $cliente->id) }}">
