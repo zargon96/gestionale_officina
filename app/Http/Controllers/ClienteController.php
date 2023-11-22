@@ -28,18 +28,17 @@ class ClienteController extends Controller
             'codice_fiscale' => 'nullable|string',
         ]);
 
-        $cliente = Cliente::firstOrCreate([
-            'email' => $request->input('email'),
-        ], [
+        $cliente = new Cliente([
             'nome' => $request->input('nome'),
             'cognome' => $request->input('cognome'),
+            'email' => $request->input('email'),
             'telefono' => $request->input('telefono'),
             'codice_fiscale' => $request->input('codice_fiscale'),
         ]);
 
-        $cliente->auto();
+        $cliente->save();
 
-        return redirect()->route('clienti.auto.create', ['cliente' => $cliente->id])->with('success', 'Cliente creato con successo');
+        return redirect()->route('clienti.auto.create', $cliente->id)->with('success', 'Cliente creato con successo');
 
     }
 
