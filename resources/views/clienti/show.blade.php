@@ -46,17 +46,22 @@
                 </tbody>
             </table>
             
+            
+            <div class="col-md-6 mt-3">
+                <a href="{{ route('clienti.auto.create', $cliente->id)}}" class="btn btn-primary">aggiungi un altra auto</a> 
+            </div>
+            <div class="col-md-6 mt-3">
+                <a href="{{ route('clienti.index') }}" class="btn btn-primary">Torna all'elenco dei clienti</a> 
+            </div>
 
-            <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}" class="row mt-4">
+            {{-- <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}" class="row mt-4">
                 @csrf
-                {{-- @method('DELETE')
+                @method('DELETE')
                 <div class="col-md-6 mt-3">
                     <button type="submit" class="btn btn-danger">Elimina Cliente</button>
-                </div> --}}
-                <div class="col-md-6 mt-3">
-                    <a href="{{ route('clienti.index') }}" class="btn btn-primary">Torna all'elenco dei clienti</a> 
                 </div>
-            </form>
+                
+            </form> --}}
         </div>
     </div>
 @endsection

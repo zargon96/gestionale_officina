@@ -61,10 +61,11 @@ public function store(Request $request, $clienteId)
     return redirect()->route('clienti.auto.create', $cliente->id)->with('success', 'Auto aggiunte con successo! aggiungine altre o premi su "torna indietro"');
 }
 
-public function edit($cliente_id)
-{
-    $auto = Auto::with('cliente')->find($cliente_id);
 
+public function edit($id)
+{
+    $auto = Auto::where('cliente_id', $id)->first();
+    
     if ($auto) {
         return view('auto.edit_auto', ['auto' => $auto ]);
     } else {
@@ -72,40 +73,25 @@ public function edit($cliente_id)
     }
 }
 
-
-public function update(Request $request, $cliente_id)
+public function update(Request $request, $id)
 {
-    $cliente = Cliente::find($cliente_id);
+    $auto = Auto::find($request->input('id'));
 
-    if (!$cliente) {
-        return redirect()->route('clienti.index')->with('error', 'Cliente non trovato');
-    }
-
-    // Utilizza la relazione tra Cliente e Auto per ottenere l'auto
-    $auto = $cliente->auto;
-
-    if (!$auto) {
+    if (!$auto || $auto->cliente_id != $id) {
         return redirect()->route('clienti.index')->with('error', 'Auto non trovata');
     }
 
-    // Ottieni tutte le auto associate al cliente
-    $auto_cliente = $cliente->auto;
-
-    // Itera su ciascuna auto e aggiorna i campi desiderati
-    foreach ($auto_cliente as $auto) {
-        $auto->update([
-            'modello' => $request->input("modello"),
-            'targa' => $request->input("targa"),
-            'n_telaio' => $request->input("n_telaio"),
-            'marca' => $request->input("marca"),
-            'anno' => $request->input("anno"),
-            'chilometri' => $request->input("chilometri"),
-            'note_stato' => $request->input("note_stato"),
-            'data_intervento' => $request->input("data_intervento"),
-        ]);
-    }
-
-    $auto->save(); // Salva le modifiche all'auto
+    $auto->update([
+        'modello' => $request->input('modello'),
+        'targa' => $request->input('targa'),
+        'n_telaio' => $request->input('n_telaio'),
+        'marca' => $request->input('marca'),
+        'anno' => $request->input('anno'),
+        'chilometri' => $request->input('chilometri'),
+        'note_stato' => $request->input('note_stato'),
+        'data_intervento' => $request->input('data_intervento'),
+        
+    ]);
 
     return redirect()->route('clienti.index')->with('success', 'Auto aggiornata con successo');
 }
@@ -113,39 +99,19 @@ public function update(Request $request, $cliente_id)
 
 public function destroy($id)
 {
-    $auto = Auto::with('cliente')->find($id);
-    if ($auto) {
-        // Elimina le auto associate
-        $auto->auto()->delete();
+    // Trova l'auto associata al cliente
+    $auto = Auto::where('cliente_id', $id)->first();
 
-        // Elimina il auto solo se esiste
+    if ($auto) {
+        // Elimina l'auto solo se esiste
         $auto->delete();
 
-        return redirect()->route('clienti.index')->with('success', 'auto eliminato con successo');
+        return redirect()->route('clienti.index')->with('success', 'Auto eliminata con successo');
     } else {
-        // Se il auto non esiste, reindirizza a una pagina di errore
-        return redirect()->route('clienti.index')->with('error', 'auto non trovato');
+        // Se l'auto non esiste, reindirizza a una pagina di errore
+        return redirect()->route('clienti.index')->with('error', 'Auto non trovata');
     }
 }
-
-
-// public function destroy($id)
-// {
-//     $auto = Auto::find($id);
-
-//     if ($auto) {
-//         // Elimina le auto associate
-//         $auto->cliente()->delete();
-
-//         // Elimina l' auto solo se esiste
-//         $auto->delete();
-
-//         return redirect()->route('clienti.index')->with('success', 'auto eliminato con successo');
-//     } else {
-//         // Se il auto$auto non esiste, reindirizza a una pagina di errore
-//         return redirect()->route('clienti.index')->with('error', 'auto non trovato');
-//     }
-// }
 
 }
 
