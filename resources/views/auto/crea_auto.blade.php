@@ -44,7 +44,7 @@
                 {{-- <button type="button" class="btn btn-success" onclick="aggiungiAltraAuto()">Aggiungi Altra Auto</button> --}}
             </div>
             <div class="col-md-6 mt-3">
-                <a type="button" class="btn btn-primary" href="{{ url()->previous() }}">Torna Indietro</a>
+                <a type="button" class="btn btn-primary" onclick="location.href='{{ route('clienti.index') }}'">Torna Indietro</a>
             </div>
         </form>
     </div>
