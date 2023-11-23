@@ -51,7 +51,7 @@
         </div>
     </div>
 @endforeach
-<h2 class="titolo">Dettagli cliente</h2>
+<h2 class="titolo">Lista clienti</h2>
     <div class="container mt-5">
         <div class="row">
             <table>

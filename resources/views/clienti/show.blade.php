@@ -28,7 +28,7 @@
                             <td>{{ $auto->note_stato }}</td>
                             <td>{{ $auto->data_intervento }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('clienti.auto.edit', ['cliente' => $cliente->id, 'auto' => $auto->id]) }}">
+                                <a class="btn btn-primary mt-3" href="{{ route('clienti.auto.edit', ['cliente' => $cliente->id, 'auto' => $auto->id]) }}">
                                     Modifica Auto
                                 </a>
                             </td>
@@ -36,7 +36,7 @@
                                 <form method="POST" action="{{ route('clienti.auto.destroy', ['cliente' => $cliente->id, 'auto' => $auto->id]) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger" type="submit">
+                                    <button class="btn btn-danger mt-3" type="submit">
                                         Elimina Auto
                                     </button>
                                 </form>

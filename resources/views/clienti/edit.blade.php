@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h1 class="titolo">Modifica Cliente</h1>
+<h1 class="titolo">Modifica Cliente {{$cliente->nome}}</h1>
 <div class="container">
     <form method="POST" action="{{ route('clienti.update', $cliente->id) }}" class="row">
         @csrf
@@ -35,13 +35,14 @@
                 <input type="text" name="codice_fiscale" id="codice_fiscale" value="{{ $cliente->codice_fiscale }}" class="form-control">
             </div>
         </div>
-        <div class="col-md-6 mb-3">
-            <button type="submit" class="btn btn-primary mt-3">Salva Modifiche</button>   
-        </div>
-        <div class="col-md-6 mb-3">
-            <a href="{{ route('clienti.index') }}" class="btn btn-primary mt-3">Torna all'elenco dei clienti</a>
-        </div>
-           
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <button type="submit" class="btn btn-primary mt-3">Salva Modifiche</button>   
+            </div>
+            <div class="col-md-6 mb-3">
+                <a href="{{ route('clienti.index') }}" class="btn btn-primary mt-3">Torna all'elenco dei clienti</a>
+            </div>
+        </div>   
     </form>
 </div>
     
