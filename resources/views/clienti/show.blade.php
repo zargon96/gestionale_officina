@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class="titolo">Dettagli Auto cliente</h1>
+    <h1 class="titolo">Dettagli Auto cliente {{$cliente->nome}}</h1>
     <div class="container mt-5">
         <div class="row">
                 <table>
