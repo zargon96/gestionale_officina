@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\auth;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AutoController;
-use App\Models\Cliente;
+
 
 
 
