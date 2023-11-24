@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h1 class="titolo">Modifica Cliente {{$cliente->nome}}</h1>
+<h1 class="titolo">Modifica Cliente {{$cliente->nome}} {{$cliente->cognome}}</h1>
 <div class="container">
     <form method="POST" action="{{ route('clienti.update', $cliente->id) }}" class="row">
         @csrf

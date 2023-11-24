@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class="titolo">Dettagli Auto cliente {{$cliente->nome}}</h1>
+    <h1 class="titolo">Dettagli Auto cliente {{$cliente->nome}} {{$cliente->cognome}}</h1>
     <div class="container mt-5">
         <div class="row">
                 <table>
@@ -33,13 +33,35 @@
                                 </a>
                             </td>
                             <td>
-                                <form method="POST" action="{{ route('clienti.auto.destroy', ['cliente' => $cliente->id, 'auto' => $auto->id]) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger mt-3" type="submit">
-                                        Elimina Auto
-                                    </button>
-                                </form>
+
+                                <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Elimina Auto
+                                </button>
+                            
+                        
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content" style="background-color: #293133">
+                                            <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Attenzione!</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Sei sicuro di voler eliminare l'auto del cliente {{$cliente->nome}} {{$cliente->cognome}}?
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                                <form method="POST" action="{{ route('clienti.auto.destroy', ['cliente' => $cliente->id, 'auto' => $auto->id]) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger" type="submit">
+                                                        Elimina Auto
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

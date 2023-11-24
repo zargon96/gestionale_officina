@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h1 class="titolo">Modifica auto del cliente {{$auto->cliente->nome}}</h1> 
+<h1 class="titolo">Modifica auto del cliente {{$auto->cliente->nome}} {{$auto->cliente->cognome}}</h1> 
     <div class="container">
         <form method="POST" action="{{ route('clienti.auto.update', ['cliente_id' => $auto->cliente->id, 'auto_id' => $auto->id])}}" class="row">
             @csrf

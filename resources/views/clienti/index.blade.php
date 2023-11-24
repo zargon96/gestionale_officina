@@ -7,6 +7,7 @@
 </head>
 
 <body>
+@section('content')
 <div class="container">
     @if (Route::has('login'))
     <div class="pt-3">
@@ -68,65 +69,61 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($clienti as $cliente)
-                    <tr>
-                        <td>{{ $cliente->nome }}</td>
-                        <td>{{ $cliente->cognome }}</td>
-                        <td>{{ $cliente->email }}</td>
-                        <td>{{ $cliente->telefono }}</td>
-                        <td>{{ $cliente->codice_fiscale }}</td>
-                        <td>
-                            <a class="btn btn-primary" href="{{ route('clienti.edit', $cliente->id) }}">
-                                Modifica Cliente
-                            </a>
-                        </td>
-                        <td>
-                            <a class="btn btn-primary" href="{{ route('clienti.show', $cliente->id) }}">
-                                Mostra Auto
-                            </a>
-                        </td>
-                        <td>
-                            <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Elimina Cliente
-                        </button>
-                        
-                        <!-- Modal -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Attenzione!</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                    Sei sicuro di voler eliminare il cliente?
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                        <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger mt-2" type="submit">
-                                                Elimina Cliente
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            {{-- <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger mt-2" type="submit">
+                    @foreach ($clienti as $cliente)
+                        <tr>
+                            <td>{{ $cliente->nome }}</td>
+                            <td>{{ $cliente->cognome }}</td>
+                            <td>{{ $cliente->email }}</td>
+                            <td>{{ $cliente->telefono }}</td>
+                            <td>{{ $cliente->codice_fiscale }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('clienti.edit', $cliente->id) }}">
+                                    Modifica Cliente
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('clienti.show', $cliente->id) }}">
+                                    Mostra Auto
+                                </a>
+                            </td>
+                            <td>
+        
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     Elimina Cliente
                                 </button>
-                            </form> --}}
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                            
+                        
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content" style="background-color: #293133">
+                                            <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Attenzione!</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Sei sicuro di voler eliminare il cliente?
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                                <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger" type="submit">
+                                                        Elimina Cliente
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                     @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection
 </body>
 
 
