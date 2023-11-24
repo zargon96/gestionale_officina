@@ -28,7 +28,7 @@
                             <td>{{ $auto->note_stato }}</td>
                             <td>{{ $auto->data_intervento }}</td>
                             <td>
-                                <a class="btn btn-primary mt-3" href="{{ route('clienti.auto.edit', ['cliente' => $cliente->id, 'auto' => $auto->id]) }}">
+                                <a class="btn btn-primary mt-3" href="{{ route('clienti.auto.edit', ['cliente_id' => $cliente->id, 'auto_id' => $auto->id]) }}">
                                     Modifica Auto
                                 </a>
                             </td>
