@@ -19,4 +19,9 @@ class Auto extends Model
         return $this->belongsTo(Cliente::class, 'cliente_id');
 
     }
+    // Relazione con la tabella Interventi
+    public function interventi()
+    {
+        return $this->hasMany(Intervento::class);
+    }
 }
