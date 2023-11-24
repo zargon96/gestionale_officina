@@ -15,11 +15,6 @@ class Cliente extends Model
     {
         return $this->hasMany(Auto::class);
     }
-
-    // public function gruppoCliente()
-    // {
-    //     return $this->belongsTo(GruppoCliente::class, 'gruppo_cliente_id');
-    // }
     
     
 }

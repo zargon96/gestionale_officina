@@ -111,34 +111,6 @@ public function update(Request $request, $cliente_id, $auto_id)
 // }
 
 
-
-
-
-
-// public function update(Request $request, $id)
-// {
-//     $auto = Auto::where('cliente_id')->find($id);
-
-//     if (!$auto || $auto->cliente_id != $id) {
-//         return redirect()->route('clienti.index')->with('error', 'Auto non trovata');
-//     }
-
-//     $auto->update([
-//         'modello' => $request->input('modello'),
-//         'targa' => $request->input('targa'),
-//         'n_telaio' => $request->input('n_telaio'),
-//         'marca' => $request->input('marca'),
-//         'anno' => $request->input('anno'),
-//         'chilometri' => $request->input('chilometri'),
-//         'note_stato' => $request->input('note_stato'),
-//         'data_intervento' => $request->input('data_intervento'),
-        
-//     ]);
-
-//     return redirect()->route('clienti.index')->with('success', 'Auto aggiornata con successo');
-// }
-
-
 public function destroy($id)
 {
     // Trova l'auto associata al cliente
