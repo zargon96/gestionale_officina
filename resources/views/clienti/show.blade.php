@@ -12,8 +12,9 @@
                             <th scope="col">Marca</th>
                             <th scope="col">Anno</th>
                             <th scope="col">Chilometri</th>
-                            <th scope="col">Note</th>
-                            <th scope="col">Data dell'intervento</th>
+                            <th scope="col">Modifica auto</th>
+                            <th scope="col">Aggiungi intervento</th>
+                            <th scope="col">Elimina auto</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,12 +26,17 @@
                             <td>{{ $auto->marca }}</td>
                             <td>{{ $auto->anno }}</td>
                             <td>{{ $auto->chilometri }}</td>
-                            <td>{{ $auto->note_stato }}</td>
-                            <td>{{ $auto->data_intervento }}</td>
+                            {{-- <td>{{ $auto->note_stato }}</td>
+                            <td>{{ $auto->data_intervento }}</td> --}}
                             <td>
                                 <a class="btn btn-primary mt-3" href="{{ route('clienti.auto.edit', ['cliente_id' => $cliente->id, 'auto_id' => $auto->id]) }}">
                                     Modifica Auto
                                 </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary mt-3" href="{{ route('intervento.create', ['cliente_id' => $cliente->id, 'auto_id' => $auto->id]) }}">
+                                    Aggiungi intervento
+                                </a>                                                              
                             </td>
                             <td>
 

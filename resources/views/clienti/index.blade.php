@@ -82,11 +82,6 @@
                                     Modifica Cliente
                                 </a>
                             </td>
-                            <td>
-                                <a class="btn btn-primary" href="{{ route('intervento.create', ['cliente' => $cliente->id, 'auto' => optional($cliente->auto->first())->id]) }}">
-                                    Aggiungi intervento
-                                </a>                                
-                            </td>
                             
                             <td>
                                 <a class="btn btn-primary" href="{{ route('clienti.show', $cliente->id) }}">
