@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="titolo">Aggiungi Intervento</h1>
     <div class="container">
-        <form action="{{ route('clienti.auto.store', $cliente->id) }}" method="POST" class="row">
+        <form action="{{ route('intervento.store', ['cliente_id' => $cliente->id, 'auto_id' => $auto->id]) }}" method="POST" class="row">
             @csrf
             <h3 class="titolo">Dati Intervento</h3>
                 <div class="col-md-6">
@@ -12,14 +12,14 @@
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Data dell'intervento</label>
-                    <input type="text" name="data_intervento" class="form-control">
+                    <input type="date" name="data_intervento" class="form-control">
                 </div>
                 <div class="col-md-6 mt-3">
                     <button type="submit" class="btn btn-primary">Salva Intervento</button>
                 </div>
                 <div class="col-md-6 mt-3">
-                    <a type="button" class="btn btn-primary" onclick="location.href='{{ route('clienti.index') }}'">Torna Indietro</a>
-                </div>
+                    <a href="{{ route('clienti.index') }}" class="btn btn-primary">Torna all'elenco dei clienti</a>
+                </div>                
         </form>
     </div>
 @endsection

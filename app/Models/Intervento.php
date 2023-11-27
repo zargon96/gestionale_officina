@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Intervento extends Model
 {
     use HasFactory;
+    protected $table = 'interventi';
     protected $fillable = [
         'note_stato',
         'data_intervento',

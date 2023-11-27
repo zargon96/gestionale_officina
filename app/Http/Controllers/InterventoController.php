@@ -23,9 +23,10 @@ class InterventoController extends Controller
 
     public function store(Request $request, $cliente_id, $auto_id)
     {
+        
         // Trova l'auto tramite l'ID
         $auto = Auto::where('cliente_id', $cliente_id)->with('cliente')->find($auto_id);
-    
+        
         if (!$auto) {
             return redirect()->back()->with('error', 'Auto non trovata');
         }
@@ -33,7 +34,7 @@ class InterventoController extends Controller
         // Validazione della richiesta
         $request->validate([
             'note_stato' => 'required',
-            'data_intervento' => 'required',
+            'data_intervento' => 'required|date',
         ]);
     
         // Creiamo un nuovo intervento
@@ -46,6 +47,8 @@ class InterventoController extends Controller
         $auto->interventi()->save($intervento);
     
         return redirect()->back()->with('success', 'Intervento aggiunto con successo');
+        
+
     }
     
 }

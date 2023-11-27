@@ -64,7 +64,6 @@
                         <th scope="col">Telefono</th>
                         <th scope="col">Codice Fiscale</th>
                         <th scope="col">Modifica Cliente</th>
-                        <th scope="col">Aggiungi l'intervento</th>
                         <th scope="col">Mostra auto</th>
                         <th scope="col">Elimina Cliente</th>
                     </tr>
