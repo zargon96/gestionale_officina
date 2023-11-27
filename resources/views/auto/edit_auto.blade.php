@@ -42,7 +42,7 @@
                     <input type="text" name="chilometri" id="chilometri" value="{{ $auto->chilometri }}" class="form-control">
                 </div>
             </div>
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <div class="form-group">
                     <label for="note_stato" class="titolo-label">Note sulle modifiche / stato dell'auto</label>
                     <textarea name="note_stato" class="form-control" id="note_stato" rows="1">{{ $auto->note_stato }}</textarea>
@@ -53,7 +53,7 @@
                     <label class="titolo-label" for="data_intervento">Data dell'intervento</label>
                     <input type="text" name="data_intervento" id="data_intervento" value="{{ $auto->data_intervento }}" class="form-control">
                 </div>
-            </div>
+            </div> --}}
             <div class="col-md-6 mb-3">
                 <button type="submit" class="btn btn-primary mt-3">Salva Modifiche</button>   
             </div>

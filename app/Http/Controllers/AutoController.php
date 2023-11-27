@@ -32,8 +32,8 @@ public function store(Request $request, $clienteId)
         'marca' => 'required',
         'anno' => 'required',
         'chilometri' => 'required',
-        'note_stato' => 'required',
-        'data_intervento' => 'required',
+        // 'note_stato' => 'required',
+        // 'data_intervento' => 'required',
     ]);
 
     // Trova il cliente
@@ -51,8 +51,8 @@ public function store(Request $request, $clienteId)
         'marca' => $request->input('marca'),
         'anno' => $request->input('anno'),
         'chilometri' => $request->input('chilometri'),
-        'note_stato' => $request->input('note_stato'),
-        'data_intervento' => $request->input('data_intervento'),
+        // 'note_stato' => $request->input('note_stato'),
+        // 'data_intervento' => $request->input('data_intervento'),
     ]);
 
     // Associa l'auto al cliente
@@ -88,8 +88,8 @@ public function update(Request $request, $cliente_id, $auto_id)
         'marca' => $request->input('marca'),
         'anno' => $request->input('anno'),
         'chilometri' => $request->input('chilometri'),
-        'note_stato' => $request->input('note_stato'),
-        'data_intervento' => $request->input('data_intervento'),
+        // 'note_stato' => $request->input('note_stato'),
+        // 'data_intervento' => $request->input('data_intervento'),
     ]);
 
     return redirect()->route('clienti.index')->with('success', 'Auto aggiornata con successo');

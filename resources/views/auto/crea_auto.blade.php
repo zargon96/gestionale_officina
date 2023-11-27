@@ -31,14 +31,14 @@
                     <label class="form-label">Chilometri</label>
                     <input type="text" name="chilometri" class="form-control">
                 </div>
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                     <label for="note_stato" class="form-label">Note sulle modifiche / stato dell'auto</label>
                     <textarea class="form-control" name="note_stato" id="note_stato" rows="1"></textarea>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Data dell'intervento</label>
                     <input type="text" name="data_intervento" class="form-control">
-                </div>
+                </div> --}}
             <div class="col-md-6 mt-3">
                 <button type="submit" class="btn btn-primary">Salva Auto</button>
                 {{-- <button type="button" class="btn btn-success" onclick="aggiungiAltraAuto()">Aggiungi Altra Auto</button> --}}

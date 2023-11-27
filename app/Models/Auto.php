@@ -11,7 +11,7 @@ class Auto extends Model
     use HasFactory;
     protected $primaryKey = 'id'; 
     protected $table = 'auto';
-    protected $fillable = ['modello', 'targa', 'n_telaio', 'marca', 'anno', 'chilometri', 'note_stato', 'data_intervento'];
+    protected $fillable = ['modello', 'targa', 'n_telaio', 'marca', 'anno', 'chilometri'];
 
     // Relazione con la tabella Cliente
     public function cliente()
