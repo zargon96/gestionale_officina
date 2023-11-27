@@ -14,6 +14,7 @@
                             <th scope="col">Chilometri</th>
                             <th scope="col">Modifica auto</th>
                             <th scope="col">Aggiungi intervento</th>
+                            <th scope="col">Mostra gli interventi</th>
                             <th scope="col">Elimina auto</th>
                         </tr>
                     </thead>
@@ -36,6 +37,11 @@
                             <td>
                                 <a class="btn btn-primary mt-3" href="{{ route('intervento.create', ['cliente_id' => $cliente->id, 'auto_id' => $auto->id]) }}">
                                     Aggiungi intervento
+                                </a>                                                              
+                            </td>
+                            <td>
+                                <a class="btn btn-primary mt-3" href="{{ route('intervento.show', ['cliente_id' => $cliente->id, 'auto_id' => $auto->id]) }}">
+                                    Mostra gli interventi
                                 </a>                                                              
                             </td>
                             <td>
