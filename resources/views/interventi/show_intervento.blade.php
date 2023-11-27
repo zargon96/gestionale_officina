@@ -59,12 +59,12 @@
             </table>
             
             
-            {{-- <div class="col-md-6 mt-3">
-                <a href="{{ route('clienti.auto.create', $cliente->id)}}" class="btn btn-primary">aggiungi un altro intervento</a> 
+            <div class="col-md-6 mt-3">
+                <a href="{{ route('intervento.create',['cliente_id' => $cliente->id, 'auto_id' => $auto->id])}}" class="btn btn-primary">aggiungi un altro intervento</a> 
             </div>
             <div class="col-md-6 mt-3">
                 <a href="{{ route('clienti.index') }}" class="btn btn-primary">Torna all'elenco dei clienti</a> 
-            </div> --}}
+            </div>
         </div>
     </div>
 @endsection
