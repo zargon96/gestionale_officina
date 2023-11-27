@@ -45,7 +45,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/clienti/{cliente_id}/auto/{auto_id}/intervento/show', [InterventoController::class, 'show'])->name('intervento.show');
     Route::get('/clienti/{cliente_id}/auto/{auto_id}/intervento/edit', [InterventoController::class, 'edit'])->name('intervento.edit');
     Route::post('/clienti/{cliente_id}/auto/{auto_id}/intervento/update', [InterventoController::class, 'update'])->name('intervento.update');
-    Route::delete('/clienti/{cliente_id}/auto/{auto_id}/intervento/destroy', [InterventoController::class, 'destroy'])->name('intervento.destroy');
+    Route::delete('/clienti/{cliente_id}/auto/{auto_id}/intervento/{intervento_id}/destroy', [InterventoController::class, 'destroy'])->name('intervento.destroy');
 });
 
 Auth::routes();

@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                                <form method="POST" action="{{ route('intervento.destroy',['cliente_id' => $cliente->id, 'auto_id' => $auto->id]) }}">
+                                                <form method="POST" action="{{ route('intervento.destroy',['cliente_id' => $cliente->id, 'auto_id' => $auto->id,'intervento_id' => $intervento->id]) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger" type="submit">
