@@ -66,23 +66,6 @@ class InterventoController extends Controller
     }
     
 
-//     public function edit($cliente_id, $auto_id)
-// {
-//     $auto = Auto::where('cliente_id', $cliente_id)->with('cliente')->find($auto_id);
-    
-//     if (!$auto) {
-//         return redirect()->route('clienti.index')->with('error', 'Auto non trovata');
-//     }
-
-//     // Trova l'intervento associato all'auto
-//     $intervento = Intervento::find($auto_id);
-//     dd($auto_id);
-//     if ($intervento) {
-//         return view('interventi.edit_intervento', compact('auto', 'intervento'));
-//     } else {
-//         return redirect()->route('clienti.index')->with('error', 'Intervento non trovato');
-//     }
-// }
 
     public function edit($cliente_id, $auto_id, $intervento_id)
     {
@@ -149,29 +132,6 @@ class InterventoController extends Controller
         return redirect()->route('clienti.index')->with('error', 'Intervento non trovato');
     }
 }
-
-
-    // public function destroy($cliente_id, $auto_id)
-    // {
-    //     $auto = Auto::where('cliente_id', $cliente_id)->with('cliente')->find($auto_id);
-
-    //     if (!$auto) {
-    //         return redirect()->route('clienti.index')->with('error', 'Auto non trovata');
-    //     }
-
-    //     $intervento = $auto->interventi()->find($auto_id);
-
-    //     if ($intervento) {
-
-    //         // Elimina l'intervento solo se esiste
-    //         $intervento->delete();
-
-    //         return redirect()->route('clienti.index')->with('success', 'intervento eliminato con successo');
-    //     } else {
-    //         // Se il cliente non esiste, reindirizza a una pagina di errore
-    //         return redirect()->route('clienti.index')->with('error', 'Intervento non trovato');
-    //     }
-    // }
 
 }
 
