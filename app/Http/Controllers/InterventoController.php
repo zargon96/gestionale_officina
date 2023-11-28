@@ -60,9 +60,9 @@ class InterventoController extends Controller
             return redirect()->back()->with('error', 'Auto non trovata');
         }
 
-        $cliente = $auto->cliente;
+
        
-        return view('interventi.show_intervento', compact('auto', 'cliente'));
+        return view('interventi.show_intervento', compact('auto'));
     }
     
 

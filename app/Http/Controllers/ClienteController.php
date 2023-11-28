@@ -46,7 +46,8 @@ class ClienteController extends Controller
 
     {
         // Recupera il dettaglio del cliente dal database
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::with('auto.interventi')->find($id);
+        
 
         if (!$cliente) {
             return redirect()->route('clienti.index')->with('error', 'Cliente non trovato');

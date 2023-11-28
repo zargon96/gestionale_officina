@@ -119,6 +119,19 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                            <td colspan="9">
+                                <h3>Interventi</h3>
+                                @foreach ($cliente->auto as $auto)
+                                    <h4>Auto: {{ $auto->cliente->nome }} {{ $auto->cliente->cognome }}</h4>
+                                    <ul>
+                                        @foreach ($auto->interventi as $intervento)
+                                            <li>{{ $intervento->note_stato }} - {{ $intervento->data_intervento }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endforeach
+                            </td>
+                        </tr>
                      @endforeach
                 </tbody>
             </table>

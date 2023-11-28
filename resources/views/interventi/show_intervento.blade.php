@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class="titolo">Dettagli intervento cliente {{$cliente->nome}} {{$cliente->cognome}}</h1>
+    <h1 class="titolo">Dettagli intervento cliente {{$auto->cliente->nome}} {{$auto->cliente->cognome}}</h1> 
     <div class="container mt-5">
         <div class="row">
                 <table>
@@ -18,7 +18,7 @@
                             <td>{{ $intervento->note_stato }}</td>
                             <td>{{ $intervento->data_intervento }}</td>
                             <td>
-                                <a class="btn btn-primary mt-3" href="{{ route('intervento.edit',['cliente_id' => $cliente->id, 'auto_id' => $auto->id,'intervento_id' => $intervento->id]) }}">
+                                <a class="btn btn-primary mt-3" href="{{ route('intervento.edit',['cliente_id' => $auto->cliente->id, 'auto_id' => $auto->id,'intervento_id' => $intervento->id]) }}">
                                     Modifica intervento
                                 </a>
                             </td>
@@ -37,11 +37,11 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Sei sicuro di voler eliminare l'intervento del cliente {{$cliente->nome}} {{$cliente->cognome}}?
+                                                Sei sicuro di voler eliminare l'intervento del cliente {{$auto->cliente->nome}} {{$auto->cliente->cognome}}?
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                                <form method="POST" action="{{ route('intervento.destroy',['cliente_id' => $cliente->id, 'auto_id' => $auto->id,'intervento_id' => $intervento->id]) }}">
+                                                <form method="POST" action="{{ route('intervento.destroy',['cliente_id' => $auto->cliente->id, 'auto_id' => $auto->id,'intervento_id' => $intervento->id]) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger" type="submit">
@@ -60,7 +60,7 @@
             
             
             <div class="col-md-6 mt-3">
-                <a href="{{ route('intervento.create',['cliente_id' => $cliente->id, 'auto_id' => $auto->id])}}" class="btn btn-primary">aggiungi un altro intervento</a> 
+                <a href="{{ route('intervento.create',['cliente_id' => $auto->cliente->id, 'auto_id' => $auto->id])}}" class="btn btn-primary">aggiungi un altro intervento</a> 
             </div>
             <div class="col-md-6 mt-3">
                 <a href="{{ route('clienti.index') }}" class="btn btn-primary">Torna all'elenco dei clienti</a> 
