@@ -7,7 +7,7 @@
             @csrf
             <h3 class="titolo">Dati Intervento</h3>
                 <div class="col-md-6">
-                    <label for="note_stato" class="form-label">Note sulle modifiche / stato dell'auto</label>
+                    <label for="note_stato" class="form-label">Note sulle modifiche / stato dell'auto</label> 
                     <textarea class="form-control" name="note_stato" id="note_stato" rows="1"></textarea>
                 </div>
                 <div class="col-md-6">

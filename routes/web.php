@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 Route::middleware(['web'])->group(function () {
     Route::get('/clienti', [ClienteController::class, 'index'])->name('clienti.index');
-    Route::get('/clienti/create', [ClienteController::class, 'create'])->name('clienti.create');
+    Route::get('/clienti/create', [ClienteController::class, 'create'])->name('clienti.create');  
     Route::post('/clienti', [ClienteController::class, 'store'])->name('clienti.store');
     Route::get('/clienti/{id}', [ClienteController::class, 'show'])->name('clienti.show');
     Route::get('/clienti/{id}/edit', [ClienteController::class, 'edit'])->name('clienti.edit');
