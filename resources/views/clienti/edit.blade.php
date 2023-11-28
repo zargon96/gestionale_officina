@@ -40,7 +40,7 @@
                 <button type="submit" class="btn btn-primary mt-3">Salva Modifiche</button>   
             </div>
             <div class="col-md-6 mb-3">
-                <a href="{{ route('clienti.index') }}" class="btn btn-primary mt-3">Torna all'elenco dei clienti</a>
+                <a href="{{ url()->previous() }}" class="btn btn-primary mt-3">Torna Indietro</a>
             </div>
         </div>   
     </form>

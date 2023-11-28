@@ -18,7 +18,7 @@
                     <button type="submit" class="btn btn-primary">Salva Intervento</button>
                 </div>
                 <div class="col-md-6 mt-3">
-                    <a href="{{ route('clienti.index') }}" class="btn btn-primary">Torna all'elenco dei clienti</a>
+                    <a href="{{ url()->previous() }}" class="btn btn-primary">Torna Indietro</a>
                 </div>                
         </form>
     </div>

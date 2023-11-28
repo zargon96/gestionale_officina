@@ -85,7 +85,7 @@
                 <a href="{{ route('clienti.auto.create', $cliente->id)}}" class="btn btn-primary">aggiungi un altra auto</a> 
             </div>
             <div class="col-md-6 mt-3">
-                <a href="{{ route('clienti.index') }}" class="btn btn-primary">Torna all'elenco dei clienti</a> 
+                <a href="{{ url()->previous() }}" class="btn btn-primary">Torna Indietro</a> 
             </div>
 
             {{-- <form method="POST" action="{{ route('clienti.destroy', $cliente->id) }}" class="row mt-4">
