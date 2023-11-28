@@ -43,8 +43,8 @@ Route::middleware(['web'])->group(function () {
     Route::get('/clienti/{cliente_id}/auto/{auto_id}/intervento/create', [InterventoController::class, 'create'])->name('intervento.create');
     Route::post('/clienti/{cliente_id}/auto/{auto_id}/intervento/store', [InterventoController::class, 'store'])->name('intervento.store');
     Route::get('/clienti/{cliente_id}/auto/{auto_id}/intervento/show', [InterventoController::class, 'show'])->name('intervento.show');
-    Route::get('/clienti/{cliente_id}/auto/{auto_id}/intervento/edit', [InterventoController::class, 'edit'])->name('intervento.edit');
-    Route::post('/clienti/{cliente_id}/auto/{auto_id}/intervento/update', [InterventoController::class, 'update'])->name('intervento.update');
+    Route::get('/clienti/{cliente_id}/auto/{auto_id}/intervento/{intervento_id}/edit', [InterventoController::class, 'edit'])->name('intervento.edit');
+    Route::post('/clienti/{cliente_id}/auto/{auto_id}/intervento/{intervento_id}/update', [InterventoController::class, 'update'])->name('intervento.update');
     Route::delete('/clienti/{cliente_id}/auto/{auto_id}/intervento/{intervento_id}/destroy', [InterventoController::class, 'destroy'])->name('intervento.destroy');
 });
 

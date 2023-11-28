@@ -18,7 +18,7 @@
                             <td>{{ $intervento->note_stato }}</td>
                             <td>{{ $intervento->data_intervento }}</td>
                             <td>
-                                <a class="btn btn-primary mt-3" href="{{ route('intervento.edit',['cliente_id' => $cliente->id, 'auto_id' => $auto->id]) }}">
+                                <a class="btn btn-primary mt-3" href="{{ route('intervento.edit',['cliente_id' => $cliente->id, 'auto_id' => $auto->id,'intervento_id' => $intervento->id]) }}">
                                     Modifica intervento
                                 </a>
                             </td>

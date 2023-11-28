@@ -2,7 +2,7 @@
 @section('content')
 <h1 class="titolo">Modifica Intervento {{$auto->cliente->nome}} {{$auto->cliente->cognome}}</h1>
 <div class="container">
-    <form method="POST" action="{{ route('intervento.update', ['cliente_id' => $auto->cliente->id, 'auto_id' => $auto->id])}}" class="row">
+    <form method="POST" action="{{ route('intervento.update', ['cliente_id' => $auto->cliente->id, 'auto_id' => $auto->id,'intervento_id' => $intervento->id])}}" class="row">
         @csrf
         <h3 class="titolo">Dati Anagrafici</h3>
         <div class="col-md-6">
